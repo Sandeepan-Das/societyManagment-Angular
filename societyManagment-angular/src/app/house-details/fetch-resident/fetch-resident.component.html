@@ -1,49 +1,24 @@
 <form class="d-flex">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="fetch"
         [(ngModel)]="key">
-    <button class="btn btn-outline-success" type="submit" (click)="fetchData()">Search</button>
+    <button class="btn btn-outline-success" type="submit" (click)="fetchData()">Search by Room No</button>
 </form>
-<!-- {
-    "block": "A",
-    "houseType": {
-      "balcony": 2,
-      "bathrooms": 2,
-      "floors": 0,
-      "rooms": 2,
-      "type": "2BHK"
-    },
-    "occupiedBy": "Owner_4riy36s4krkcoeg8",
-    "ownedBy": "Owner_4riy36s4krkcoeg8",
-    "roomNo": "307",
-    "type": "Room"
-  } -->
-<!-- {
-    "type":"Owner",
-    "name":"Shyamal Kumar Das",
-    "residents":[{"name":"Shyamal Kumar Das","phone":123},{"name":"Sonali Das","phone":345}],
-    "parking":"Yes",
-    "vehicle":[{"type":"car","registrationNumber":"abc"}],
-    "registeredNumber":99234850,
-    "roomNo":"A-307",
-    "occupiedBy":"yes"
-} -->
 
 <div class="form-style-5" *ngIf="searched">
     <form [formGroup]="detailsForm">
         <fieldset formGroupName="houseDetails">
-            <legend><span class="number">1</span> House Info <span *ngIf="admin"><i class="fas fa-edit"></i><i
-                        class="fas fa-trash"></i></span> </legend>
+            <legend><span class="number">1</span> House Info <span *ngIf="admin"><i class="fas fa-edit" (click)="changeHouseStructure()"></i></span> </legend>
             <label>Block:</label>
-            <input type="text" placeholder="Block" formControlName="block" [readonly]="editInfo">
+            <input type="text" placeholder="Block" formControlName="block" [readonly]=true>
             <label>Room Number:</label>
-            <input type="text" placeholder="Room Number" formControlName="roomNo" [readonly]="editInfo">
+            <input type="text" placeholder="Room Number" formControlName="roomNo" [readonly]=true>
             <label for="members">House Type:</label>
             <div id="members" class="container" formGroupName="houseType">
 
 
                 <div class="col-md-12">
                     Type of House:
-                    <input type="text" formControlName="type" [readonly]="editInfo">
+                    <input type="text" formControlName="type" [readonly]=true>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -69,7 +44,7 @@
 
 
             </div>
-            <button class="btn btn-success" *ngIf="!editInfo"> SAVE</button>
+            <button class="btn btn-success" *ngIf="!editInfo" (click)="saveInfo()"> SAVE</button>
         </fieldset>
 
 

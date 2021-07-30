@@ -1,0 +1,50 @@
+<div class="form-style-5">
+    <form [formGroup]="detailsForm" (ngSubmit)="submitForm()">
+        <fieldset >
+            <legend><span class="number">1</span> House Info</legend>
+            <label>Block:</label>
+            <input type="text" placeholder="Block" formControlName="block">
+            <label>Room Number:</label>
+            <input type="text" placeholder="Room Number" formControlName="roomNo">
+            <label for="members">House Type:</label>
+            <div id="members" class="container" formGroupName="houseType">
+
+
+                <div class="col-md-12">
+                    Type of House:
+                    <select id="status" formControlName="type">
+
+                        <option value="2BHK">2BHK</option>
+                        <option value="3BHK">3BHK</option>
+                        <option value="Duplex">Duplex</option>
+                        <option value="Triplex">Triplex</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        Number of Balcony:
+                        <input type="text" formControlName="balcony">
+                    </div>
+                    <div class="col-md-6">
+                        Number of BathRooms:
+                        <input type="text" formControlName="bathrooms">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        Number of Floors :
+                        <input type="text" formControlName="floors">
+                    </div>
+                    <div class="col-md-6">
+                        Number of rooms:
+                        <input type="text" formControlName="rooms">
+                    </div>
+
+                </div>
+
+
+            </div>
+            <button type="submit" class="btn btn-success" > SAVE</button>
+        </fieldset>
+    </form>
+</div>

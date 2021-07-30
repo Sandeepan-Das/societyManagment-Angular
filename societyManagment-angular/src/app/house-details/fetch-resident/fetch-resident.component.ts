@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { format } from './format';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { HouseServiceService } from './../house-service.service';
@@ -24,9 +25,13 @@ export class FetchResidentComponent implements OnInit {
   tenantVehicleList!: FormArray;
   form = new format(this.fb)
   admin: boolean = false
-  constructor(private service: HouseServiceService, private fb: FormBuilder) { }
+  constructor(private service: HouseServiceService, private fb: FormBuilder, private ActivatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.ActivatedRoute.queryParams.subscribe((data) => {
+      this.key = data["roomNo"]
+      if (this.key != undefined) this.fetchData()
+    })
     this.checkAdmin()
   }
   checkAdmin() {
@@ -43,13 +48,16 @@ export class FetchResidentComponent implements OnInit {
 
     })
   }
-  delOwner(){
-    this.service.delOnwer(this.detailsForm.get("owner")?.value.roomNo).subscribe(()=>{
-      
+  changeHouseStructure(){
+    this.editInfo = false;
+  }
+  delOwner() {
+    this.service.delOnwer(this.detailsForm.get("owner")?.value.roomNo).subscribe(() => {
+
     })
   }
-  delTenant(){
-    this.service.delTenant(this.detailsForm.get("tenant")?.value.roomNo).subscribe(()=>{
+  delTenant() {
+    this.service.delTenant(this.detailsForm.get("tenant")?.value.roomNo).subscribe(() => {
 
     })
   }
@@ -59,28 +67,35 @@ export class FetchResidentComponent implements OnInit {
   changeTenantValues() {
     this.editTenant = false;
   }
-  saveOwner(){
+  
+  saveInfo(){
+    this.service.updateHouse(this.detailsForm.get("houseDetails")?.value).subscribe(()=>{
+
+    })
     
-    this.service.updateOwner(this.detailsForm.get("owner")?.value).subscribe(()=>{
-      
+  }
+  saveOwner() {
+
+    this.service.updateOwner(this.detailsForm.get("owner")?.value).subscribe(() => {
+
     })
   }
-  saveTenant(){
-    
-    this.service.updateTenant(this.detailsForm.get("tenant")?.value).subscribe(()=>{
-      
+  saveTenant() {
+
+    this.service.updateTenant(this.detailsForm.get("tenant")?.value).subscribe(() => {
+
     })
   }
-  delTenantMember(i:any){
+  delTenantMember(i: any) {
     this.tenantResidents.removeAt(i);
   }
-  delTenantVehicle(i:any){
+  delTenantVehicle(i: any) {
     this.tenantVehicleList.removeAt(i);
   }
-  delOwnerMember(i:any){
+  delOwnerMember(i: any) {
     this.ownerResidents.removeAt(i);
   }
-  delOwnerVehicle(i:any){
+  delOwnerVehicle(i: any) {
     this.ownerVehicleList.removeAt(i);
   }
   addMoreOwnerMember() {

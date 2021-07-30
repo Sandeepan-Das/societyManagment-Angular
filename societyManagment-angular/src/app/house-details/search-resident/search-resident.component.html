@@ -1,5 +1,49 @@
-<form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="fetch"
-        [(ngModel)]="key">
-    <button class="btn btn-outline-success" type="submit" (click)="fetchData()">Search</button>
-</form>
+<div class="cards">
+    <h2 class="header">
+        Search Result
+    </h2>
+    <div class="services container" *ngFor="let item of searchResult">
+        <!-- <div class="row" style="width: 18rem;"> -->
+
+
+            <div class="content content-1" style="width: 18rem;">
+
+                <h2>
+                    {{item.hd.roomNo}}
+                </h2>
+
+                <h2>
+                    {{item.hd.type}}
+                </h2>
+                <p>
+                    Name: {{item.hd.name}}
+                </p>
+                <p>
+                Contact Number: {{item.hd.registeredNumber}}
+                </p>
+                <a (click)="fetchDetails(item.hd.roomNo)">Read More</a>
+            </div>
+
+        <!-- </div> -->
+
+
+
+    </div>
+    <div *ngIf="searchResult.length==0">
+        <h4>No results Found</h4>
+    </div>
+</div>
+<!-- <div class="container" >
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="card" *ngFor="let item of searchResult" >
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

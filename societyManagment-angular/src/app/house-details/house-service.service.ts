@@ -26,8 +26,15 @@ export class HouseServiceService {
   delTenant(id:any):Observable<any>{
     return this.http.delete(`http://localhost:3000/api/del/tenant/${id}`)
   }
+  updateHouse(body:any):Observable<any>{
+    return this.http.put("http://localhost:3000/api/update/house",body)
+  }
 
   searchQueryResidents(data:any):Observable<any>{
     return this.http.get(`http://localhost:3000/api/fetchSearchQuery/${data}`)
+  }
+
+  insertHouse(data:any):Observable<any>{
+    return this.http.post("http://localhost:3000/api/houseInfo",data)
   }
 }

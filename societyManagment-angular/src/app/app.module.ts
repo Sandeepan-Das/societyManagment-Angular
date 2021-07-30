@@ -10,6 +10,7 @@ import { FetchResidentComponent } from './house-details/fetch-resident/fetch-res
 import { InsertResidentsComponent } from './house-details/insert-residents/insert-residents.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResidentComponent } from './house-details/search-resident/search-resident.component';
+import { InsertHouseComponent } from './house-details/insert-house/insert-house.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchResidentComponent } from './house-details/search-resident/search-
     HouseDetailsComponent,
     FetchResidentComponent,
     InsertResidentsComponent,
-    SearchResidentComponent
+    SearchResidentComponent,
+    InsertHouseComponent
   ],
   imports: [
     BrowserModule,

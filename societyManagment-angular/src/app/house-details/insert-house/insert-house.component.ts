@@ -1,0 +1,30 @@
+import { HouseServiceService } from './../house-service.service';
+import { format } from './format';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-insert-house',
+  templateUrl: './insert-house.component.html',
+  styleUrls: ['./insert-house.component.css']
+})
+export class InsertHouseComponent implements OnInit {
+  detailsForm!:FormGroup
+  form = new format(this.fb)
+  constructor(private fb:FormBuilder,private service:HouseServiceService) { }
+
+  ngOnInit(): void {
+    this.initializeForm()
+  }
+  initializeForm(){
+    this.detailsForm = this.form.formStructure()
+    
+  }
+  submitForm(){
+    this.service.insertHouse(this.detailsForm.value
+      ).subscribe(()=>{
+
+    })
+    
+  }
+}

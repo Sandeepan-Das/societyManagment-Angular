@@ -1,5 +1,6 @@
 import { HouseServiceService } from './../house-service.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-resident',
@@ -8,13 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchResidentComponent implements OnInit {
   public key!: String;
-  searchResult = []
-  constructor(public service: HouseServiceService) { }
+  searchResult = [{
+    hd: {
+      name: "",
+      registeredNumber: "",
+      roomNo: "",
+      type: ""
+    }
+  }]
+  constructor(public service: HouseServiceService, private ActivatedRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
+    this.ActivatedRoute.queryParams.subscribe((data) => {
+
+      this.key = data["searchQuery"];
+      console.log(this.key)
+      this.fetchData(this.key)
+    })
   }
-  fetchData() {
-    this.service.searchQueryResidents(this.key).subscribe((data) => {
+  fetchDetails(roomNo: String) {
+    this.route.navigate(["/houseDetails/fetchResidents"], {
+      queryParams: { roomNo: roomNo }
+    })
+  }
+  fetchData(key: String) {
+    this.service.searchQueryResidents(key).subscribe((data) => {
       this.searchResult = data.data
       console.log(this.searchResult)
     })
