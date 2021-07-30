@@ -1,0 +1,206 @@
+<form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="fetch"
+        [(ngModel)]="key">
+    <button class="btn btn-outline-success" type="submit" (click)="fetchData()">Search</button>
+</form>
+<!-- {
+    "block": "A",
+    "houseType": {
+      "balcony": 2,
+      "bathrooms": 2,
+      "floors": 0,
+      "rooms": 2,
+      "type": "2BHK"
+    },
+    "occupiedBy": "Owner_4riy36s4krkcoeg8",
+    "ownedBy": "Owner_4riy36s4krkcoeg8",
+    "roomNo": "307",
+    "type": "Room"
+  } -->
+<!-- {
+    "type":"Owner",
+    "name":"Shyamal Kumar Das",
+    "residents":[{"name":"Shyamal Kumar Das","phone":123},{"name":"Sonali Das","phone":345}],
+    "parking":"Yes",
+    "vehicle":[{"type":"car","registrationNumber":"abc"}],
+    "registeredNumber":99234850,
+    "roomNo":"A-307",
+    "occupiedBy":"yes"
+} -->
+
+<div class="form-style-5" *ngIf="searched">
+    <form [formGroup]="detailsForm">
+        <fieldset formGroupName="houseDetails">
+            <legend><span class="number">1</span> House Info <span *ngIf="admin"><i class="fas fa-edit"></i><i
+                        class="fas fa-trash"></i></span> </legend>
+            <label>Block:</label>
+            <input type="text" placeholder="Block" formControlName="block" [readonly]="editInfo">
+            <label>Room Number:</label>
+            <input type="text" placeholder="Room Number" formControlName="roomNo" [readonly]="editInfo">
+            <label for="members">House Type:</label>
+            <div id="members" class="container" formGroupName="houseType">
+
+
+                <div class="col-md-12">
+                    Type of House:
+                    <input type="text" formControlName="type" [readonly]="editInfo">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        Number of Balcony:
+                        <input type="text" formControlName="balcony" [readonly]="editInfo">
+                    </div>
+                    <div class="col-md-6">
+                        Number of BathRooms:
+                        <input type="text" formControlName="bathrooms" [readonly]="editInfo">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        Number of Floors :
+                        <input type="text" formControlName="floors" [readonly]="editInfo">
+                    </div>
+                    <div class="col-md-6">
+                        Number of rooms:
+                        <input type="text" formControlName="rooms" [readonly]="editInfo">
+                    </div>
+
+                </div>
+
+
+            </div>
+            <button class="btn btn-success" *ngIf="!editInfo"> SAVE</button>
+        </fieldset>
+
+
+
+        <fieldset formGroupName="owner" *ngIf="displayOwner">
+            <legend><span class="number">2</span> Owner Info <span *ngIf="admin"><i class="fas fa-edit"
+                        (click)="changeOwnerValues()"></i><i class="fas fa-trash" (click)="delOwner()"></i></span>
+            </legend>
+            <input type="text" placeholder="Your Name *" formControlName="name" [readonly]="editOwner">
+            <label for="members">Details of Members:</label>
+            <div id="members" class="container" formArrayName="residents"
+                *ngFor="let item of ownerResidents.controls;let i = index">
+                <div class="row" [formGroupName]="i">
+
+                    <div class="col-md-5">
+                        <input type="text" formControlName="memberName" placeholder="Name *" [readonly]="editOwner">
+                    </div>
+                    <div class="col-md-5">
+
+                        <input type="text" formControlName="phoneNumber" placeholder="Phone Number *"
+                            [readonly]="editOwner">
+                    </div>
+                    <div class="col-md-2">
+
+                        <i class="fas fa-trash" *ngIf="!editOwner" (click)="delOwnerMember(i)"></i>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" *ngIf="!editOwner" (click)="addMoreOwnerMember()">Add
+                More</button>
+
+
+
+            <label for="parking">parking spot:</label>
+            <input type="text" id="parking" formControlName="parking" [readonly]="editOwner">
+
+            <label for="vehicles">Details of Vehicles:</label>
+            <div id="vehicles" class="container" formArrayName="vehicleList"
+                *ngFor="let item of ownerVehicleList.controls;let i = index">
+                <div class="row" [formGroupName]="i">
+
+                    <div class="col-md-5">
+                        <input type="text" formControlName="vehicleType" placeholder="vehicle Type *"
+                            [readonly]="editOwner">
+                    </div>
+                    <div class="col-md-5">
+
+                        <input type="text" formControlName="vehicleNumber" placeholder="Vehicle Number *"
+                            [readonly]="editOwner">
+                    </div>
+                    <div class="col-md-2">
+
+                        <i class="fas fa-trash" *ngIf="!editOwner" (click)="delOwnerVehicle(i)"></i>
+                    </div>
+                </div>
+
+
+            </div>
+            <button type="button" class="btn btn-success" *ngIf="!editOwner" (click)="addMoreOwnerVehicle()">Add
+                More</button>
+            <label for="regNumber">Registered Phone Number:</label>
+            <input id="regNumber" type="text" placeholder="Registered Phone Number *" formControlName="registeredNumber"
+                [readonly]="editOwner">
+            <label for="rNum">Room Number:</label>
+            <input id="rNum" type="text" placeholder="Room Number *" formControlName="roomNo" [readonly]=true>
+            <button class="btn btn-success" *ngIf="!editOwner" (click)="saveOwner()">SAVE</button>
+        </fieldset>
+
+
+        <fieldset formGroupName="tenant" *ngIf="displayTenant">
+            <legend><span class="number">3</span> Tenant Info <span *ngIf="admin"><i class="fas fa-edit"
+                        (click)="changeTenantValues()"></i><i class="fas fa-trash" (click)="delTenant"></i></span>
+            </legend>
+            <input type="text" placeholder="Your Name *" formControlName="name" [readonly]="editTenant">
+            <label for="members">Details of Members:</label>
+            <div id="members" class="container" formArrayName="residents"
+                *ngFor="let item of tenantResidents.controls;let i = index">
+                <div class="row" [formGroupName]="i">
+
+                    <div class="col-md-5">
+                        <input type="text" formControlName="memberName" placeholder="Name *" [readonly]="editTenant">
+                    </div>
+                    <div class="col-md-5">
+
+                        <input type="text" formControlName="phoneNumber" placeholder="Phone Number *"
+                            [readonly]="editTenant">
+                    </div>
+                    <div class="col-md-2">
+
+                        <i class="fas fa-trash" *ngIf="!editTenant" (click)="delTenantMember(i)"></i>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" *ngIf="!editTenant" (click)="addMoreTenantMember()">Add
+                More</button>
+
+
+
+            <label for="parking">parking spot:</label>
+            <input type="text" id="parking" formControlName="parking" [readonly]="editTenant">
+
+            <label for="vehicles">Details of Vehicles:</label>
+            <div id="vehicles" class="container" formArrayName="vehicleList"
+                *ngFor="let item of tenantVehicleList.controls;let i = index">
+                <div class="row" [formGroupName]="i">
+
+                    <div class="col-md-5">
+                        <input type="text" formControlName="vehicleType" placeholder="vehicle Type *"
+                            [readonly]="editTenant">
+                    </div>
+                    <div class="col-md-5">
+
+                        <input type="text" formControlName="vehicleNumber" placeholder="Vehicle Number *"
+                            [readonly]="editTenant">
+                    </div>
+                    <div class="col-md-2">
+
+                        <i class="fas fa-trash" *ngIf="!editTenant" (click)="delTenantVehicle(i)"></i>
+                    </div>
+                </div>
+
+            </div>
+            <button type="button" class="btn btn-success" *ngIf="!editTenant" (click)="addMoreTenantVehicle()">Add
+                More</button>
+            <label for="regNumber">Registered Phone Number:</label>
+            <input id="regNumber" type="text" placeholder="Registered Phone Number *" formControlName="registeredNumber"
+                [readonly]="editTenant">
+            <label for="rNum">Room Number:</label>
+            <input id="rNum" type="text" placeholder="Room Number *" formControlName="roomNo" [readonly]=true>
+            <button type="submit" class="btn btn-success" *ngIf="!editTenant" (click)="saveTenant()">SAVE</button>
+        </fieldset>
+
+    </form>
+</div>

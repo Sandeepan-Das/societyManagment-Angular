@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-sm-3">
+
+
+            <div class="card mb-4 rounded-3 shadow-sm" [routerLink]="['/houseDetails/fetchResidents']" routerLinkActive="router-link-active" >
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Search House Details</h4>
+                </div>
+                <div class="card-body">
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Shows the details of current residnet</li>
+                        <li>Shows the house structure</li>
+                        <li>Only admin can edit the details</li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="card mb-4 rounded-3 shadow-sm" [routerLink]="['/houseDetails/insertResidents']" routerLinkActive="router-link-active" >
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Insert House Details</h4>
+                </div>
+                <div class="card-body">
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Insert room number</li>
+                        <li>Insert house structure</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="card mb-4 rounded-3 shadow-sm" [routerLink]="['/houseDetails/search']" routerLinkActive="router-link-active" >
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Search By Name</h4>
+                </div>
+                <div class="card-body">
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Name of members or registered member</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
