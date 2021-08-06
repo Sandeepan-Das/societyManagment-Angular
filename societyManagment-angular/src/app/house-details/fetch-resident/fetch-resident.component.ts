@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fetch-resident.component.css']
 })
 export class FetchResidentComponent implements OnInit {
+  public success:Boolean = false
   public key!: String;
   public detailsForm!: FormGroup
   public searched: boolean = false
@@ -53,12 +54,12 @@ export class FetchResidentComponent implements OnInit {
   }
   delOwner() {
     this.service.delOnwer(this.detailsForm.get("owner")?.value.roomNo).subscribe(() => {
-
+      this.success = true
     })
   }
   delTenant() {
     this.service.delTenant(this.detailsForm.get("tenant")?.value.roomNo).subscribe(() => {
-
+      this.success = true
     })
   }
   changeOwnerValues() {
@@ -70,20 +71,20 @@ export class FetchResidentComponent implements OnInit {
   
   saveInfo(){
     this.service.updateHouse(this.detailsForm.get("houseDetails")?.value).subscribe(()=>{
-
+      this.success = true
     })
     
   }
   saveOwner() {
 
     this.service.updateOwner(this.detailsForm.get("owner")?.value).subscribe(() => {
-
+      this.success = true
     })
   }
   saveTenant() {
 
     this.service.updateTenant(this.detailsForm.get("tenant")?.value).subscribe(() => {
-
+      this.success = true
     })
   }
   delTenantMember(i: any) {
@@ -135,5 +136,8 @@ export class FetchResidentComponent implements OnInit {
     this.ownerVehicleList = owner.get("vehicleList") as FormArray;
     this.tenantVehicleList = tenant.get("vehicleList") as FormArray;
     this.searched = true;
+  }
+  close(){
+    this.success = false
   }
 }

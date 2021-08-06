@@ -4,6 +4,7 @@ export class format {
     houseInfo = {
         block: "",
         roomNo: "",
+        uuid: "",
         houseType: {
             balcony: "",
             bathrooms: "",
@@ -17,6 +18,7 @@ export class format {
     owner = {
         name: "",
         parking: "",
+        uuid: "",
         residents: [{
             memberName: "",
             phoneNumber: ""
@@ -31,6 +33,7 @@ export class format {
     tenant = {
         name: "",
         parking: "",
+        uuid: "",
         residents: [{
             memberName: "",
             phoneNumber: ""
@@ -41,7 +44,7 @@ export class format {
         }],
         registeredNumber: "",
         roomNo: "",
-        
+
     }
 
 
@@ -50,21 +53,22 @@ export class format {
 
     }
     setData(houseInfoData: any) {
-        this.houseInfo = houseInfoData.houseInfo.house_details
+        this.houseInfo = houseInfoData.houseInfo
         if (houseInfoData.owner != undefined)
-            this.owner = houseInfoData.owner.house_details
+            this.owner = houseInfoData.owner
         if (houseInfoData.tenant != undefined)
-            this.tenant = houseInfoData.tenant.house_details
+            this.tenant = houseInfoData.tenant
 
 
     }
     formStructure(): FormGroup {
-        
+
         return this.fb.group({
             houseDetails: this.fb.group({
 
                 block: this.houseInfo.block,
                 roomNo: this.houseInfo.roomNo,
+                uuid: this.houseInfo.uuid,
                 houseType: this.fb.group({
                     balcony: this.houseInfo.houseType.balcony,
                     bathrooms: this.houseInfo.houseType.bathrooms,
@@ -76,6 +80,7 @@ export class format {
             owner: this.fb.group({
                 name: this.owner.name,
                 parking: this.owner.parking,
+                uuid:this.owner.uuid,
                 residents: this.fb.array(this.ownerResidentsForm()),
                 vehicleList: this.fb.array(this.ownerVehicleForm()),
                 registeredNumber: this.owner.registeredNumber,
@@ -84,6 +89,7 @@ export class format {
             tenant: this.fb.group({
                 name: this.tenant.name,
                 parking: this.tenant.parking,
+                uuid:this.tenant.uuid,
                 residents: this.fb.array(this.tenantResidentsForm()),
                 vehicleList: this.fb.array(this.tenantVehicleForm()),
                 registeredNumber: this.tenant.registeredNumber,

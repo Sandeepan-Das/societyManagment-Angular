@@ -35,7 +35,7 @@ export class InsertResidentsComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.residentsForm.value)
+    
     this.service.insertResidents(this.residentsForm.value).subscribe(()=>{
       this.success = true;
     })

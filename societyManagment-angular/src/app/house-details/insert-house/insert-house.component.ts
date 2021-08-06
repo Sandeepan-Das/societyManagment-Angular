@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./insert-house.component.css']
 })
 export class InsertHouseComponent implements OnInit {
+  public success:Boolean = false
+
   detailsForm!:FormGroup
   form = new format(this.fb)
   constructor(private fb:FormBuilder,private service:HouseServiceService) { }
@@ -23,8 +25,11 @@ export class InsertHouseComponent implements OnInit {
   submitForm(){
     this.service.insertHouse(this.detailsForm.value
       ).subscribe(()=>{
-
+        this.success = true
     })
     
+  }
+  close(){
+    this.success = false
   }
 }
