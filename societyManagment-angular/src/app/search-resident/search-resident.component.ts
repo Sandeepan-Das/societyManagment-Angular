@@ -1,4 +1,4 @@
-import { HouseServiceService } from './../house-service.service';
+import { HouseServiceService } from '../shared/services/houseDetails/house-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 

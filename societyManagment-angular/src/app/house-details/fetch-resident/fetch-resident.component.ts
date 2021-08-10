@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { format } from './format';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { HouseServiceService } from './../house-service.service';
+import { HouseServiceService } from '../../shared/services/houseDetails/house-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

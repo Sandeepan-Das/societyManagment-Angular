@@ -1,3 +1,4 @@
+import { CredentialServiceService } from './shared/services/credential/credential-service.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,10 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+  logOut:Boolean = false;
+
   title = 'societyManagment-angular';
   
-  constructor(private routes:Router){
+  constructor(private routes:Router,private credentialService:CredentialServiceService){
 
   }
 
@@ -20,4 +22,14 @@ export class AppComponent {
     })
     
   }
+  ngOnInit(): void {
+    if(localStorage.getItem("refreshToken")) this.logOut = true; 
+  }
+  loggedOut(){
+    this.credentialService.logOut({token:localStorage.getItem("refreshToken")}).subscribe(()=>{
+      localStorage.removeItem("refreshToken")
+      localStorage.removeItem("accessToken")
+    })
+  }
+
 }

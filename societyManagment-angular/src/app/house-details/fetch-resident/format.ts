@@ -29,6 +29,7 @@ export class format {
         }],
         registeredNumber: "",
         roomNo: "",
+        email:"",
     }
     tenant = {
         name: "",
@@ -44,6 +45,7 @@ export class format {
         }],
         registeredNumber: "",
         roomNo: "",
+        email:"",
 
     }
 
@@ -84,7 +86,8 @@ export class format {
                 residents: this.fb.array(this.ownerResidentsForm()),
                 vehicleList: this.fb.array(this.ownerVehicleForm()),
                 registeredNumber: this.owner.registeredNumber,
-                roomNo: this.owner.roomNo
+                roomNo: this.owner.roomNo,
+                email:this.owner.email
             }),
             tenant: this.fb.group({
                 name: this.tenant.name,
@@ -93,7 +96,8 @@ export class format {
                 residents: this.fb.array(this.tenantResidentsForm()),
                 vehicleList: this.fb.array(this.tenantVehicleForm()),
                 registeredNumber: this.tenant.registeredNumber,
-                roomNo: this.tenant.roomNo
+                roomNo: this.tenant.roomNo,
+                email:this.tenant.email,
             })
         }
 

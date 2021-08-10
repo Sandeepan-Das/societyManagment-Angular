@@ -13,7 +13,8 @@ export class form {
             vehicleList: this.fb.array([this.vehicleStructure()]),
             registeredNumber:"",
             roomNo:"",
-            occupiedBy:""
+            occupiedBy:"",
+            email:""
         })
     }
     memberStructure(): FormGroup {

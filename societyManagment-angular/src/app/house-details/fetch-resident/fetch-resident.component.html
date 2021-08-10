@@ -124,6 +124,9 @@
             <label for="regNumber">Registered Phone Number:</label>
             <input id="regNumber" type="text" placeholder="Registered Phone Number *" formControlName="registeredNumber"
                 [readonly]="editOwner">
+            <label for="email">Email:</label>
+            <input id="email" type="text" placeholder="Email *" formControlName="email"
+                [readonly]="editOwner">
             <label for="rNum">Room Number:</label>
             <input id="rNum" type="text" placeholder="Room Number *" formControlName="roomNo" [readonly]=true>
             <button class="btn btn-success" *ngIf="!editOwner" (click)="saveOwner()">SAVE</button>

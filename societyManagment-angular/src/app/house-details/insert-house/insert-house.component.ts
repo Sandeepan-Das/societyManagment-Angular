@@ -1,4 +1,4 @@
-import { HouseServiceService } from './../house-service.service';
+import { HouseServiceService } from '../../shared/services/houseDetails/house-service.service';
 import { format } from './format';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
