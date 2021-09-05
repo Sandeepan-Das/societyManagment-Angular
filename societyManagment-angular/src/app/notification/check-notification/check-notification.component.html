@@ -1,0 +1,18 @@
+<div class="cards">
+    <h2 class="header">
+        Pending Request
+    </h2>
+    <div class="services" *ngFor="let item of list">
+        <div class="content content-3">
+            
+            <h2>
+                {{item.msg}}
+            </h2>
+            <a (click)="status('ACCEPT',item.id)">Accept</a>
+            <a (click)="status('REJECT',item.id)">Deny</a>
+        </div>
+    </div>
+    <div *ngIf="list.length==0">
+        <h4>No results Found</h4>
+    </div>
+</div>

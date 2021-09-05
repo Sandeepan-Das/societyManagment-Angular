@@ -1,0 +1,33 @@
+<div class="cards">
+    <h2 class="header">
+        Pending Request
+    </h2>
+    <div class="services container" *ngFor="let item of result">
+        
+
+
+            <div class="content content-3" style="width: 18rem;">
+
+                <h2>
+                    {{item.roomNo}}
+                </h2><span [ngClass]="{'badge bg-danger': item.valid =='REJECT','badge bg-warning':item.valid=='PROCESSING','badge bg-success':item.valid=='ACCEPT'}">{{item.valid}}</span>
+                <p>
+                    Name: {{item.name}}
+                </p>
+                <p>
+                Contact Number: {{item.registeredNumber}}
+                </p>
+                <p>
+                Message: {{item.msg}}
+                </p>
+                <a (click)="removePending(item)">Ok</a>
+                
+            </div>
+
+        
+
+
+
+    </div>
+    
+</div>

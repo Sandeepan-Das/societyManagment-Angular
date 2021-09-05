@@ -23,7 +23,7 @@ export class SearchResidentComponent implements OnInit {
     this.ActivatedRoute.queryParams.subscribe((data) => {
 
       this.key = data["searchQuery"];
-      console.log(this.key)
+      
       this.fetchData(this.key)
     })
   }
@@ -32,10 +32,15 @@ export class SearchResidentComponent implements OnInit {
       queryParams: { roomNo: roomNo }
     })
   }
+  notification(roomNo: String, type: String) {
+    this.route.navigate(["/security/sendMsg"], {
+      queryParams: { roomNo: roomNo, type: type }
+    })
+  }
   fetchData(key: String) {
     this.service.searchQueryResidents(key).subscribe((data) => {
       this.searchResult = data.data
-      console.log(this.searchResult)
+      
     })
   }
 }

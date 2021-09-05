@@ -27,12 +27,12 @@ export class CredentialsComponent implements OnInit {
   }
   signUpSubmit() {
     this.service.signUp(this.credentialForm.value).subscribe(() => {
-
+      location.href="/"
     })
   }
   loginSubmit() {
     this.service.login(this.credentialForm.value).subscribe(() => {
-
+      location.href="/"
     })
   }
 }

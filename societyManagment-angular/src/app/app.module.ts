@@ -13,6 +13,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResidentComponent } from './search-resident/search-resident.component';
 import { InsertHouseComponent } from './house-details/insert-house/insert-house.component';
 import { CredentialsComponent } from './credentials/credentials.component';
+import { NotificationComponent } from './notification/notification.component';
+import { SendMessageComponent } from './security/send-message/send-message.component';
+import { CheckNotificationComponent } from './notification/check-notification/check-notification.component';
+import { SecurityNotificationComponent } from './security/security-notification/security-notification.component';
+import { SecurityComponent } from './security/security.component';
+
 
 @NgModule({
   declarations: [
@@ -22,16 +28,21 @@ import { CredentialsComponent } from './credentials/credentials.component';
     InsertResidentsComponent,
     SearchResidentComponent,
     InsertHouseComponent,
-    CredentialsComponent
+    CredentialsComponent,
+    NotificationComponent,
+    SendMessageComponent,
+    CheckNotificationComponent,
+    SecurityNotificationComponent,
+    SecurityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:authIntercptor,multi:true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: authIntercptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

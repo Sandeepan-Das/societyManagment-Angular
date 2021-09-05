@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HouseServiceService {
+  residentData = new BehaviorSubject<any>([])
+  residentData$ = this.residentData.asObservable()
 
   constructor(private http:HttpClient) { }
   fetchHouseDetails(id:any):Observable<any>{
@@ -37,4 +39,10 @@ export class HouseServiceService {
   insertHouse(data:any):Observable<any>{
     return this.http.post("http://localhost:3000/api/houseInfo",data)
   }
+
+  fetchOwnerByRoom(roomNo:any,type:any):Observable<any>{
+    return this.http.get(`http://localhost:3000/api/fetchResidentInfo?roomNo=${roomNo}&type=${type}`)
+  }
+
+  
 }

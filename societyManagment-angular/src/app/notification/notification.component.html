@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-4 rounded-3 shadow-sm" [routerLink]="['/notify/receiveNotification']"
+                routerLinkActive="router-link-active">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">My Notification</h4>
+                </div>
+                <div class="card-body">
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Inform about Package </li>
+                        <li>Inform about Guest</li>
+
+                    </ul>
+
+                </div>
+            </div>
+            
+        </div>
+
+
+    </div>
+
+
+
+</div>
