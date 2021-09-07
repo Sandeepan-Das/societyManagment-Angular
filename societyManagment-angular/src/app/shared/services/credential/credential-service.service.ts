@@ -33,8 +33,20 @@ export class CredentialServiceService {
       })
     )
   }
-  fetchUUID():Observable<any>{
+  refreshToken(): Observable<any> {
+    return this.http.post("http://localhost:3000/api/newToken", { token: localStorage.getItem("refreshToken") }).pipe(
+      tap(token => {
+        this.saveRefresh(token)
+
+      })
+    )
+  }
+  fetchUUID(): Observable<any> {
     return this.http.get("http://localhost:3000/api/uuid")
+  }
+  saveRefresh(tokens: any) {
+    localStorage.removeItem("accessToken")
+    localStorage.setItem("accessToken", tokens.accessToken)
   }
   saveToken(tokens: any) {
     localStorage.setItem("accessToken", tokens.accessToken)
