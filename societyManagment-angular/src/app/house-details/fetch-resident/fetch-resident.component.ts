@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { format } from './format';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { HouseServiceService } from '../../shared/services/houseDetails/house-service.service';
@@ -26,7 +26,7 @@ export class FetchResidentComponent implements OnInit {
   tenantVehicleList!: FormArray;
   form = new format(this.fb)
   admin: boolean = false
-  constructor(private service: HouseServiceService, private fb: FormBuilder, private ActivatedRoute: ActivatedRoute) { }
+  constructor(private service: HouseServiceService, private fb: FormBuilder, private ActivatedRoute: ActivatedRoute,private route:Router) { }
 
   ngOnInit(): void {
     this.ActivatedRoute.queryParams.subscribe((data) => {
@@ -38,9 +38,15 @@ export class FetchResidentComponent implements OnInit {
   checkAdmin() {
     this.admin = true
   }
+  search(){
+    this.route.navigate(["/houseDetails/fetchResidents"], {
+      queryParams: { roomNo: this.key}
+    })
+  }
   fetchData() {
     this.displayOwner = this.displayTenant = false;
     this.service.fetchHouseDetails(this.key).subscribe((data) => {
+      
       this.form.setData(data.data)
       if (data.data.owner != undefined) this.displayOwner = true
       if (data.data.tenant != undefined) this.displayTenant = true
@@ -126,7 +132,7 @@ export class FetchResidentComponent implements OnInit {
 
   initializeForm(data: any) {
     this.detailsForm = this.form.formStructure()
-
+    console.log(this.detailsForm)
     const owner = this.detailsForm.get("owner") as FormGroup
     const tenant = this.detailsForm.get("tenant") as FormGroup
 

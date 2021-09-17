@@ -1,0 +1,40 @@
+<div class="form-style-5">
+    <form enctype="multipart/form-data">
+        <fieldset [formGroup]="workerForm">
+            <legend><span class="number">1</span>Worker Info
+            </legend>
+            <input type="text" placeholder="Your Name *" formControlName="name">
+            <label for="number">Phone Number:</label>
+            <input id="number" type="text" placeholder="Phone Number *" formControlName="number">
+            <label for="addr">Address:</label>
+            <input id="addr" type="text" placeholder="Room Number *" formControlName="address">
+            <select id="work" formControlName="work">
+
+                <option value="Sweeper">Sweeper</option>
+                <option value="Gardener">Gardener</option>
+                <option value="HouseMaid">HouseMaid</option>
+            </select>
+            <label for="pay">Payment:</label>
+            <input id="pay" type="text" placeholder="Payment *" formControlName="payment">
+            <div class="contentarea">
+                <h1>
+                    Capture photo
+                </h1>
+                <div class="camera">
+                    <video #video id="video">Video stream not available.</video>
+                </div>
+                <canvas id="canvas" #canvas></canvas>
+                <div class="output">
+                    <img id="photo1" #photo1 alt="The screen capture will appear in this box.">
+                </div>
+                <div><button class="btn btn-success" (click)="capture1()">Take photo</button></div>
+                <div class="output">
+                    <img id="photo2" #photo2 alt="The screen capture will appear in this box.">
+                </div>
+                <div><button class="btn btn-success" (click)="capture2()">Take photo</button></div>
+                
+            </div>
+        </fieldset>
+        <button class="btn btn-success" (click)="saveData()">Save</button>
+    </form>
+</div>

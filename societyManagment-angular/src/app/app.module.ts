@@ -8,16 +8,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HouseDetailsComponent } from './house-details/house-details.component';
 import { FetchResidentComponent } from './house-details/fetch-resident/fetch-resident.component';
-import { InsertResidentsComponent } from './house-details/insert-residents/insert-residents.component';
+import { InsertResidentsComponent } from './admin/insert-residents/insert-residents.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResidentComponent } from './search-resident/search-resident.component';
-import { InsertHouseComponent } from './house-details/insert-house/insert-house.component';
+import { InsertHouseComponent } from './admin/insert-house/insert-house.component';
 import { CredentialsComponent } from './credentials/credentials.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SendMessageComponent } from './security/send-message/send-message.component';
 import { CheckNotificationComponent } from './notification/check-notification/check-notification.component';
 import { SecurityNotificationComponent } from './security/security-notification/security-notification.component';
 import { SecurityComponent } from './security/security.component';
+import { AdminComponent } from './admin/admin.component';
+import { InsertWorkerComponent } from './admin/insert-worker/insert-worker.component';
+import { WorkerComponent } from './security/worker/worker.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { SecurityComponent } from './security/security.component';
     SendMessageComponent,
     CheckNotificationComponent,
     SecurityNotificationComponent,
-    SecurityComponent
+    SecurityComponent,
+    AdminComponent,
+    InsertWorkerComponent,
+    WorkerComponent
   ],
   imports: [
     BrowserModule,
