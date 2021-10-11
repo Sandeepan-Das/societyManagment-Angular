@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { PackageNotifyService } from './../../shared/services/notification/package-notify.service';
+import { PackageNotifyService } from '../../shared/services/notification/package-notify.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

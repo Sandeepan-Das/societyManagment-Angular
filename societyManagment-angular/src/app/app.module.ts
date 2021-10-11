@@ -13,14 +13,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResidentComponent } from './search-resident/search-resident.component';
 import { InsertHouseComponent } from './admin/insert-house/insert-house.component';
 import { CredentialsComponent } from './credentials/credentials.component';
-import { NotificationComponent } from './notification/notification.component';
 import { SendMessageComponent } from './security/send-message/send-message.component';
-import { CheckNotificationComponent } from './notification/check-notification/check-notification.component';
+import { CheckNotificationComponent } from './house-details/check-notification/check-notification.component';
 import { SecurityNotificationComponent } from './security/security-notification/security-notification.component';
 import { SecurityComponent } from './security/security.component';
 import { AdminComponent } from './admin/admin.component';
 import { InsertWorkerComponent } from './admin/insert-worker/insert-worker.component';
 import { WorkerComponent } from './security/worker/worker.component';
+import { BillComponent } from './admin/bill/bill.component';
+import { ExpenditureComponent } from './house-details/expenditure/expenditure.component';
+import { WorkerProfileComponent } from './worker-profile/worker-profile.component';
 
 
 @NgModule({
@@ -32,14 +34,16 @@ import { WorkerComponent } from './security/worker/worker.component';
     SearchResidentComponent,
     InsertHouseComponent,
     CredentialsComponent,
-    NotificationComponent,
     SendMessageComponent,
     CheckNotificationComponent,
     SecurityNotificationComponent,
     SecurityComponent,
     AdminComponent,
     InsertWorkerComponent,
-    WorkerComponent
+    WorkerComponent,
+    BillComponent,
+    ExpenditureComponent,
+    WorkerProfileComponent
   ],
   imports: [
     BrowserModule,

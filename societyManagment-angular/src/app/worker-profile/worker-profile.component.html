@@ -1,0 +1,25 @@
+<div class="form-style-5">
+    <form enctype="multipart/form-data">
+        <fieldset>
+            <legend><span class="number">1</span>Worker Info
+            </legend>
+            <input type="text" placeholder="Your Name *" value="{{workerInfo.name}}">
+            <label for="number">Phone Number:</label>
+            <input id="number" type="text" placeholder="Phone Number *" value="{{workerInfo.number}}" >
+            <label for="addr">Address:</label>
+            <input id="addr" type="text" placeholder="Room Number *" value="{{workerInfo.address}}" >
+        
+            <label for="work">Work:</label>
+            <input id="work" type="text" placeholder="Room Number *" value="{{workerInfo.work}}">
+        
+            <label for="pay">Payment:</label>
+            <input id="pay" type="text" placeholder="Payment *" value="{{workerInfo.payment}}">
+            <div class="contentarea">
+                <div class="output">
+                    <img src="{{workerInfo.file1}}"  alt="The screen capture will appear in this box.">
+                </div>
+            </div>
+        </fieldset>
+        <button class="btn btn-success" (click)="saveData()">Contact</button>
+    </form>
+</div>

@@ -1,0 +1,78 @@
+<div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert" *ngIf="success">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+        <use xlink:href="#check-circle-fill" />
+    </svg>
+    <div>
+        Successfully Submitted
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="close()"></button>
+</div>
+<div class="form-style-5">
+    <form [formGroup]="billForm" (ngSubmit)="submitForm()">
+        <fieldset>
+            <legend><span class="number">1</span>Maintenance Bill</legend>
+            <label>Electricity Bill:</label>
+            <input type="text" placeholder="Electricity Bill" formControlName="electricity">
+            <label>Water Bill:</label>
+            <input type="text" placeholder="Water Bill" formControlName="water">
+            <label>Security Charges:</label>
+            <input type="text" placeholder="Security Charges" formControlName="security">
+            <label>Garbage Disposal:</label>
+            <input type="text" placeholder="Garbage Disposal" formControlName="garbage">
+            <label>Worker Fees:</label>
+            <input type="text" placeholder="Worker Fee" formControlName="worker">
+            <label for="extra">Extra Maintenance:</label>
+            <div id="extra" class="container" formArrayName="extras"
+                *ngFor="let item of extras.controls;let i = index">
+                <div class="row" [formGroupName]="i">
+
+                    <div class="col-md-5">
+                        <input type="text" formControlName="expenditure" placeholder="expenditure">
+                    </div>
+                    <div class="col-md-5">
+
+                        <input type="text" formControlName="cost" placeholder="cost">
+                    </div>
+                    <div class="col-md-2">
+
+                        <i class="fas fa-trash" (click)="delExpenditure(i)"></i>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" (click)="addMoreExpenditure()">Add More</button>
+            <label>Total:</label>
+            <input type="text" placeholder="total" formControlName="total" *ngIf="showTotal">
+            <label for="status">Share with:</label>
+            <select id="status" formControlName="type">
+
+                <option value="Owners">Owners only</option>
+                <option value="Residents">Residents only</option>
+            </select>
+            <div id="taskbtn" class="container" >
+                <div class="row" >
+
+                    <div class="col-md-5">
+                        <button type="submit" (click)="saveForm()"class="btn btn-success">Save</button>
+                    </div>
+                    <div class="col-md-5">
+
+                        <button type="submit" class="btn btn-success" (click)="total()">Calculate Total</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <br><br>
+        <button type="submit" class="btn btn-success">Send</button>
+    </form>
+</div>
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+    </symbol>
+    
+</svg>
