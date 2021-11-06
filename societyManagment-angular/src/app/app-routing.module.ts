@@ -1,3 +1,4 @@
+import { AvailableIssueComponent } from './admin/available-issue/available-issue.component';
 import { WorkerProfileComponent } from './worker-profile/worker-profile.component';
 import { ExpenditureComponent } from './house-details/expenditure/expenditure.component';
 import { BillComponent } from './admin/bill/bill.component';
@@ -16,12 +17,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SearchResidentComponent } from './search-resident/search-resident.component';
 import { InsertHouseComponent } from './admin/insert-house/insert-house.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { RaiseIssueComponent } from './maintenance/raise-issue/raise-issue.component';
 
 const routes: Routes = [
-  {path:"workerDetails",component:WorkerProfileComponent},
+  {path:"workerDetails",component:WorkerProfileComponent},{path:"maintenance",component:MaintenanceComponent,children:[{path:"raiseIssue",component:RaiseIssueComponent}]},
   { path: "houseDetails", component: HouseDetailsComponent, children: [{path:"receiveNotification",component:CheckNotificationComponent},{ path: "fetchResidents", component: FetchResidentComponent },{path:"search",component:SearchResidentComponent},{path:"bill",component:BillComponent},{path:"monthlyBill",component:ExpenditureComponent}] },
   {path:"signUp",component:CredentialsComponent},
-  {path:"admin",component:AdminComponent,children:[{path:"insertHouse",component:InsertHouseComponent},{path: "insertResidents",component:InsertResidentsComponent},{path:"insertWorker",component:InsertWorkerComponent},{path:"bill",component:BillComponent}]},
+  {path:"admin",component:AdminComponent,children:[{path:"insertHouse",component:InsertHouseComponent},{path: "insertResidents",component:InsertResidentsComponent},{path:"insertWorker",component:InsertWorkerComponent},{path:"bill",component:BillComponent},{path:"pendingIssues",component:AvailableIssueComponent}]},
   {path:"security",component:SecurityComponent,children:[{path:"sendMsg",component:SendMessageComponent},{path:"securityNotification",component:SecurityNotificationComponent},{path:"worker",component:WorkerComponent}]}
   
 ];

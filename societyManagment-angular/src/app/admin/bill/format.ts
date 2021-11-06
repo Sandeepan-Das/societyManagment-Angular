@@ -4,13 +4,11 @@ export class form {
 
     initialStructure(): FormGroup {
         return this.fb.group({
-            electricity: "",
-            water: "",
-            security: "",
-            garbage: "",
-            worker: this.workerPayment,
+            // worker: this.workerPayment,
+            typePerson:"",
             type: "",
             total:"",
+            BlockNo:"",
             extras: this.fb.array([this.extraExpenditure()])
         })
     }
@@ -32,13 +30,11 @@ export class form {
     formStructure(bill:any): FormGroup {
 
         return this.fb.group({
-            security: bill.currentBill.security,
-            electricity: bill.currentBill.electricity,
-            garbage: bill.currentBill.garbage,
-            water: bill.currentBill.water,
-            worker: this.workerPayment,
+            // worker: this.workerPayment,
             type: bill.currentBill.type,
+            typePerson: bill.currentBill.typePerson,
             total:bill.currentBill.total,
+            BlockNo:bill.currentBill.BlockNo,
             extras: this.fb.array(this.extraExpenditureStructure(bill))
         })
     }

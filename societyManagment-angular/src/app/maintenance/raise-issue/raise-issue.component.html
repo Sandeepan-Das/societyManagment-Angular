@@ -1,0 +1,20 @@
+<div class="form-style-5">
+    <form >
+        
+        <fieldset >
+            <legend><span class="number">1</span>Details of Issue
+            </legend>
+            <!-- <select id="message" formControlName="message" (change)="selectedMsg($event)"> -->
+            <select id="message" (change)="selectedMsg($event)">
+
+                <option value="Electrical">Electrical</option>
+                <option value="Water">Water</option>
+                <option value="others">other Problem</option>
+            </select>
+            <textarea name="" id="" cols="30" rows="10" name="desc" placeholder="description of issue" [(ngModel)]="desc" ></textarea>
+
+
+            <button class="btn btn-success" (click)="save()">Notify</button>
+        </fieldset>
+    </form>
+</div>

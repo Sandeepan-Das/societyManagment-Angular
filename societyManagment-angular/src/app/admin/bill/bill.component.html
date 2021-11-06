@@ -11,17 +11,7 @@
     <form [formGroup]="billForm" (ngSubmit)="submitForm()">
         <fieldset>
             <legend><span class="number">1</span>Maintenance Bill</legend>
-            <label>Electricity Bill:</label>
-            <input type="text" placeholder="Electricity Bill" formControlName="electricity">
-            <label>Water Bill:</label>
-            <input type="text" placeholder="Water Bill" formControlName="water">
-            <label>Security Charges:</label>
-            <input type="text" placeholder="Security Charges" formControlName="security">
-            <label>Garbage Disposal:</label>
-            <input type="text" placeholder="Garbage Disposal" formControlName="garbage">
-            <label>Worker Fees:</label>
-            <input type="text" placeholder="Worker Fee" formControlName="worker">
-            <label for="extra">Extra Maintenance:</label>
+            <label for="extra">Bill :</label>
             <div id="extra" class="container" formArrayName="extras"
                 *ngFor="let item of extras.controls;let i = index">
                 <div class="row" [formGroupName]="i">
@@ -43,7 +33,15 @@
             <label>Total:</label>
             <input type="text" placeholder="total" formControlName="total" *ngIf="showTotal">
             <label for="status">Share with:</label>
-            <select id="status" formControlName="type">
+            <select id="type" formControlName="type"(change)="selectedMsg($event)">
+
+                <option value="Block">Block Members</option>
+                <option value="Floor">Floor Members</option>
+                <option value="All">All</option>
+            </select>
+            <label>Block/Floor No. :</label>
+            <input type="text" placeholder="Block/Floor No. :" formControlName="BlockNo" *ngIf="showTypePerson">
+            <select id="status" formControlName="typePerson">
 
                 <option value="Owners">Owners only</option>
                 <option value="Residents">Residents only</option>

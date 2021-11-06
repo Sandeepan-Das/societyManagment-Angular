@@ -23,6 +23,9 @@ import { WorkerComponent } from './security/worker/worker.component';
 import { BillComponent } from './admin/bill/bill.component';
 import { ExpenditureComponent } from './house-details/expenditure/expenditure.component';
 import { WorkerProfileComponent } from './worker-profile/worker-profile.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { RaiseIssueComponent } from './maintenance/raise-issue/raise-issue.component';
+import { AvailableIssueComponent } from './admin/available-issue/available-issue.component';
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { WorkerProfileComponent } from './worker-profile/worker-profile.componen
     WorkerComponent,
     BillComponent,
     ExpenditureComponent,
-    WorkerProfileComponent
+    WorkerProfileComponent,
+    MaintenanceComponent,
+    RaiseIssueComponent,
+    AvailableIssueComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,8 @@ export class BillComponent implements OnInit {
   billForm!: FormGroup
   extras!: FormArray
   sum = 0;
+  typeP!:any;
+  showTypePerson:Boolean = false
   showTotal: Boolean = false
   private form = new form(this.fb)
 
@@ -47,6 +49,11 @@ export class BillComponent implements OnInit {
     this.service.shareExpenditure(this.billForm.value).subscribe(() => {
 
     })
+  }
+  selectedMsg(event:any){
+    this.typeP = event.target.value
+    if(this.typeP =="Block" || this.typeP=="Floor")
+    this.showTypePerson = true
   }
   addMoreExpenditure() {
     this.extras.push(this.form.extraExpenditure())
