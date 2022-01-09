@@ -28,7 +28,10 @@ export class AppComponent {
   ngOnInit(): void {
     if(localStorage.getItem("refreshToken")) {
       this.logOut = true;
-    } 
+    }
+    this.credentialService.checkEnv().subscribe((data)=>{
+      console.log(data)
+    }) 
   }
   loggedOut(){
     this.credentialService.logOut({token:localStorage.getItem("refreshToken")}).subscribe(()=>{

@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,7 +11,9 @@ export class CredentialServiceService {
 
 
   constructor(private http: HttpClient) { }
-
+  checkEnv():Observable<any>{
+    return this.http.get(`${environment.baseUrl}/`)
+  }
   testToken(): Observable<any> {
     return this.http.get("http://localhost:3000/api/test")
   }
